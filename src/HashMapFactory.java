@@ -15,14 +15,15 @@ public class HashMapFactory <K,V> {
     public MapS <K,V> seleecionarMapa(int opcion){
         // HashMap option 
         if (opcion ==1){
-            return new HashMapS<k,v>();
+            return new HashMapS<K,V>();
         // TreeMap option 
         }else if(opcion==2){
             return new TreeMapS<K,V>();
         // LinkedHashMap option 
-        }else if(opccion == 3){
-            return new LinkedHashMapS<K.V>();
+        }else if(opcion == 3){
+            return new LinkedHashMapS<K,V>();
         }
+        return null;
     }
     
 }
