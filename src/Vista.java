@@ -13,6 +13,8 @@
  * */
 
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 
 public class Vista {
@@ -165,4 +167,17 @@ public class Vista {
         System.out.println("Leyendo el archivo... "+name+".txt");
     }
 
-}
+    public void ReadArchivo(){
+        int Num = 0;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("ListadoProducto.txt"));
+            while (reader.readLine() != null) {
+                Num++;
+            }
+            reader.close();
+        } catch (Exception e) {
+            System.out.println(e);
+            
+    }
+
+}}

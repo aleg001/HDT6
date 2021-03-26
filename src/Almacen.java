@@ -22,15 +22,19 @@ public class Almacen {
         this.Available= Available;
     }
     
-    //Se definen getters
+    //Getters
     public String getCategoriaProducto(){return this.CategoriaProducto; }
     public String getProducto(){return this.Producto;}
     public int getAvailable(){return this.Available;}
 
-    //Se definen setters
+    //Setters
     public void setCategoriaProducto(String CategoriaProducto) {this.CategoriaProducto = CategoriaProducto;}
     public void setProducto(String Producto) {this.Producto = Producto;}
     public void setAvailable(Integer Available) {this.Available = Available;}
 
+    // Method that show all the information of the txt
+    public String toString(){       
+        return ("Categoria: " + CategoriaProducto + "," + "Nombre del Producto: "+ Producto + "," + "Cantidad:" + Available);
+    }
 
 }
