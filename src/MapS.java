@@ -12,6 +12,7 @@
 public interface MapS<K, V> {
     
         /**
+         * @athor 
          * @param key serch key
          * @return key
          */

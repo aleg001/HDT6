@@ -46,7 +46,9 @@ public class HashMapS <K,V> implements MapS<K, V>{
         }
     
         public V get(K key) {
+            // Attribute 
             int place = -1;
+            
             // Search Key 
             for (int i = 0; i < this.key.size(); i++) {
                 if (this.key.get(i).equals(key)) {
