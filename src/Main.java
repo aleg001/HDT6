@@ -8,7 +8,7 @@
 * Fecha de creacion:
 * Ultima edicion: 
 ********************************************************/
-
+// Imports 
 import java.util.HashMap; 
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
@@ -57,7 +57,7 @@ public class Main {
 
                     //Se crea HashMap correspondiente a listado producto
                     HashMap <Integer, Almacen> item = new HashMap < Integer, Almacen>();                    
-                    Hash.gHM(item, "ListadoProducto.txt");
+                  
 
                     while (salir1 == false){
                         opcionMenusito = v.OpcionesPorOperacion();
@@ -75,21 +75,21 @@ public class Main {
                             v.CantIngreso();
                             Integer xxDD=v.IngresoDeCantidad();
                              
-                            Hash.addHashMap(item, XD, xxD, xxDD);
+                          
 
                         }
                         else if (opcionMenusito == 2){
                             v.Categoria();
                             v.NombreIngreso();
                             String xxD= scan.next();
-                            Hash.ShowCategoria(item, xxD);
+                           
 
                         }
                         else if (opcionMenusito == 3){
                             v.Coleccion();
                             v.NombreIngreso();
                             String xxD= scan.next();
-                            Hash.ShowProduct(item, xxD);
+                            
                         }
                         else if (opcionMenusito == 4){
                             v.ColOrdenada();
@@ -111,7 +111,7 @@ public class Main {
                     //OPCION: TreeMap
                     
                     TreeMap <Integer, Almacen> itemT = new TreeMap < Integer, Almacen>();
-                    Tree.gTM(itemT,"ListadoProducto.txt");
+                   
                     
                     while (salir1 == false){
                         opcionMenusito = v.OpcionesPorOperacion();
@@ -147,7 +147,7 @@ public class Main {
                 else if(opcionsubmenu == 3){
                     //OPCION: LinkedHashMap
                     LinkedHashMap <Integer, Almacen> pLHM = new LinkedHashMap < Integer, Almacen>();
-                    LHash.gLM(pLHM,"ListadoProducto.txt");
+                    
                     
                     
                     while (salir1 == false){
