@@ -7,18 +7,13 @@
 * Ultima modificacion: 
 ***************************************************************/
 
-/**
- * Metodos de Vista
- * @author Alejandro Gomez
- * */
-
 import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.FileReader;
-
 
 public class Vista {
+    // Atributes 
     Scanner scan;
+
+    // ------------------------------- MENU ---------------------------------------------
 
     /**
      * Metodo constructor
@@ -31,14 +26,15 @@ public class Vista {
         scan = new Scanner(System.in);
     }
 
+    // Menus used in the program 
     /**
      * Metodo de opciones
      * @param n/a
      * @author Alejandro Gomez
      * @return n/a
      **/
-
-    public int MenuOp(){
+    
+     public int MenuOp(){
         int op = 2;
         String ops = "";
         boolean validar = true;
@@ -53,28 +49,6 @@ public class Vista {
             } else {}
         } return op;
         
-    }
-    public void OperationalResultInString(String x){
-        System.out.println(x);
-    }
-
-
-    public void FileName(){
-        System.out.println("Ingrese el nombre del archivo que desea leer (.txt) soalmente");
-    }
-
-    public String Archivo(){
-        return scan.next();
-    }
-
-    /**
-     * Metodo de Bienvenida
-     * @param n/a
-     * @author Alejandro Gomez
-     * @return n/a
-     **/
-    public void Welcome(){
-        System.out.println("\nBienvenido al supermercado La Torre");
     }
 
     /**
@@ -102,6 +76,48 @@ public class Vista {
         } return op;
     }
 
+    /**
+     * Options sub menu
+     *  @author Paola Contreras 
+     * @param n/a
+     * @return op
+     */
+    public int OpcionesPorOperacion(){
+        int op = 7;
+        String ops = "";
+        boolean validar = true;
+        System.out.println("1. Agregar Producto");
+        System.out.println("2. Ver la categoria de un producto ");
+        System.out.println("3. Ver Colección");
+        System.out.println("4. Ver Colección Ordenada");
+        System.out.println("5. Ver inventario");
+        System.out.println("6. Ver inventario ordenado");
+        System.out.println("7. Regresar al Menu");
+
+        while(validar == true){
+            System.out.println("Ingrese su opcion:  ");
+            ops = scan.next();
+            op = validarNum(ops);
+            if(op != -1){
+                validar = false;
+            } else {}
+        } return op;
+    }
+
+
+    // ------------------------------- MESAGESS -------------------------------------------------
+    
+    
+    /**
+     * Metodo de Bienvenida
+     * @param n/a
+     * @author Alejandro Gomez
+     * @return n/a
+     **/
+    public void Welcome(){
+        System.out.println("\nBienvenido al supermercado La Torre");
+    }
+
 
     /**
      * Error
@@ -110,37 +126,15 @@ public class Vista {
      * @return n/a
      **/
 
-    public void Error(){
-        System.out.println("ERROR: ");
-        System.out.println("Ingreso erroneo, intente de nuevo.");
+    public void FileError(){
+        System.out.println("Ha ocurrido un error al leer tu archivo, intentalo nuevamente");
     }
 
     /**
-     * FileInput
-     * @param n/a
      * @author Alejandro Gomez
+     * @param rawNumero
      * @return n/a
-     **/
-    public void FileInput(){
-        System.out.println("Ingrese el nombre del archivo que desea leer");
-        System.out.println("Tip: No escriba la extension .txt");
-    }
-
-    /**
-     * FileOption
-     * @param n/a
-     * @author Alejandro Gomez
-     * @return n/a
-     **/
-
-    public void FileOption(){
-        System.out.println("Que desea hacer?");
-        System.out.println("1. Abrir otro archivo");
-        System.out.println("2. Salir\n");
-        System.out.println("Ingrese su opcion:  ");
-    }
-
-  
+     */
 
     public int validarNum (String rawNumero) {
         int numInt = -1;
@@ -155,7 +149,25 @@ public class Vista {
         return numInt;
       }
 
-      
+      public int IngresoDeCantidad(){
+        int op = 2;
+        String ops = "";
+        boolean validar = true;
+        CantIngreso();
+        while(validar == true){
+            ops = scan.next();
+            op = validarNum(ops);
+            if(op != -1){
+                validar = false;
+            } else {}
+        } return op;
+        
+      }
+      /**
+       * @author Alejandro Gomez
+       * @param n/a
+       * @return N/A
+       */
     public void MensajeSalida(){
         System.out.println("Gracias por usar nuestro supermercado!");
         System.out.println("Autores:");
@@ -163,21 +175,38 @@ public class Vista {
         System.out.println("Paola Contreras");
     }
 
-    public void LectorArchivo(String name){
-        System.out.println("Leyendo el archivo... "+name+".txt");
+    public void Agregar(){
+        System.out.println("1. Agregar Producto");
+    }
+    
+    public void Categoria(){
+        System.out.println("2. Ver la categoria de un producto ");
+    }
+    
+    public void Coleccion(){
+        System.out.println("3. Ver Colección");
+    }
+    
+    public void ColOrdenada(){
+        System.out.println("4. Ver Colección Ordenada");
+    }
+    
+    public void Inventario(){
+        System.out.println("5. Ver inventario");
+    }
+    
+    public void InventarioOrd(){
+        System.out.println("6. Ver inventario ordenado");
     }
 
-    public void ReadArchivo(){
-        int Num = 0;
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("ListadoProducto.txt"));
-            while (reader.readLine() != null) {
-                Num++;
-            }
-            reader.close();
-        } catch (Exception e) {
-            System.out.println(e);
-            
+    public void Ingreso(){
+        System.out.println("Ingrese la categoria del producto que desea agregar");
     }
-
-}}
+    public void NombreIngreso(){
+        System.out.println("Ingrese el nombre del producto");
+    }
+    
+    public void CantIngreso(){
+        System.out.println("Ingrese cantidad del prdoucto");
+    }
+}
