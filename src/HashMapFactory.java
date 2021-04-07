@@ -11,7 +11,12 @@
 
 public class HashMapFactory <K,V> {
     
-    // Method that  all the possible map options 
+    /**
+     * Method that selects and retorns the implementation that is going to be used.
+     * @param opcion
+     * @return map selected 
+     */
+ 
     public MapS <K,V> seleecionarMapa(int opcion){
         // HashMap option 
         if (opcion ==1){
@@ -22,8 +27,9 @@ public class HashMapFactory <K,V> {
         // LinkedHashMap option 
         }else if(opcion == 3){
             return new LinkedHashMapS<K,V>();
-        }
-        return null;
+        }else if(opcion ==4){
+            return null;
+        } return null;
     }
     
 }
