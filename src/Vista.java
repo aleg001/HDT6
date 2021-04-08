@@ -104,6 +104,32 @@ public class Vista {
         } return op;
     }
 
+    
+    /**
+     * IngresoCantidad
+     *  @author Alecraft
+     * @param n/a
+     * @return op
+     */
+
+    public int IngresoCantidad(){
+        int op = 0;
+        String ops = "";
+        boolean validar = true;
+        System.out.println("Proceda a ingresar cantidad del producto");
+        while(validar == true){
+            System.out.println("Ingrese: ");
+            ops = scan.next();
+            op = validarNum(ops);
+            if(op != -1){
+                validar = false;
+            } else{}
+        } return op;
+    }
+
+    public void CorrectoAgregado(String producto){
+        System.out.println("Se ha agregado de forma correcta " + producto);
+    }
 
     // ------------------------------- MESAGESS -------------------------------------------------
     
@@ -208,5 +234,8 @@ public class Vista {
     
     public void CantIngreso(){
         System.out.println("Ingrese cantidad del prdoucto");
+    }
+    public void Error(){
+        System.out.println("Cuidado. Ha ocurrido un error :o");
     }
 }
