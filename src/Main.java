@@ -169,19 +169,24 @@ public class Main {
                         v.AlmacenItems();
                         // Cycle to compare the data of the Almacen and the Coleccion Inventario
                         for(Map.Entry<String, Almacen> jejeje :AlmacenInventario.entrySet() ){
-                            jejeje.getValue().ImprimirCosasXD();
+                            jejeje.getValue().ImprimirCosasxD();
                         }
                         
                     } if (opcionMenusito==6){
                         // Mostrar prod/categoria existente ordenada
                         // Cycle to compare the data of the Almacen and the Coleccion Inventario
                         for(Map.Entry<String, Almacen> jejeje :AlmacenInventario.entrySet() ){
-                        jejeje.getValue().ImprimirCosasXD();
+                        jejeje.getValue().ImprimirCosasxD();
                     }
                     } if (opcionMenusito==7){
                         // Salir
                         salir1 = true;
                         v.Despedida();
+
+                        // Time 
+                        long start= System.nanoTime();
+                        long elapsedTime = System.nanoTime()- start;
+                        System.out.println("El mapa se ha tardado "+String.valueOf(elapsedTime)+" nanosegundos" );
                     }
                 }
         }

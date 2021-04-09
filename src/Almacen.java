@@ -46,6 +46,11 @@ public class Almacen {
         System.out.println(" ");
     }
 
+    public void ImprimirCosasxD(){       
+        System.out.println("Categoria: " + CategoriaProducto + "," + "Producto: "+ Producto + "," + "Cantidad:" + Available );
+        System.out.println(" ");
+    }
+
     
 
 }
