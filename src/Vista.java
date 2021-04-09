@@ -58,14 +58,13 @@ public class Vista {
      * @return n/a
      **/
     public int Options(){
-        int op = 4;
+        int op = 3;
         String ops = "";
         boolean validar = true;
         System.out.println("\nCual implementacion usara?");
         System.out.println("1. HashMap");
         System.out.println("2. TreeMap");
         System.out.println("3. LinkedHashMap");
-        System.out.println("4. Salir\n");
         while(validar == true){
             System.out.println("Ingrese su opcion:  ");
             ops = scan.next();
@@ -92,7 +91,7 @@ public class Vista {
         System.out.println("4. Ver Colección Ordenada");
         System.out.println("5. Ver inventario");
         System.out.println("6. Ver inventario ordenado");
-        System.out.println("7. Regresar al Menu");
+        System.out.println("7. Salir \n");
 
         while(validar == true){
             System.out.println("Ingrese su opcion:  ");
@@ -174,7 +173,12 @@ public class Vista {
         
         return numInt;
       }
-
+      public void Despedida(){
+        System.out.println( "\nGracias por venir a la torre." );
+        System.out.println("Autores:");
+        System.out.println( "Alejandro Gomez" );
+        System.out.println( "Paola Contreras" );
+      }
       public int IngresoDeCantidad(){
         int op = 2;
         String ops = "";
@@ -204,21 +208,51 @@ public class Vista {
     public void Agregar(){
         System.out.println("1. Agregar Producto");
     }
+
+    public void AgregarP(){
+        System.out.println("Agregue su producto: ");
+    }
+
+    public void IngresoP(){
+        System.out.println("Que producto quiere buscar? ");
+    }
     
     public void Categoria(){
         System.out.println("2. Ver la categoria de un producto ");
     }
+    public void CategoriaFake(){
+        System.out.println("Cuidadoooo, esa categoria no existe, aun :o");
+    }
     
     public void Coleccion(){
         System.out.println("3. Ver Colección");
+    }
+
+    public void Alma(){
+        System.out.println("5. Ver almacen");
+    }
+    public void ColleccionItems(){
+        System.out.println("Se mostrara a continuacion su coleccion: ");
+    }
+    public void AlmacenItems(){
+        System.out.println("Se mostrara a continuacion su almacen: ");
     }
     
     public void ColOrdenada(){
         System.out.println("4. Ver Colección Ordenada");
     }
     
+    public void ColOrdenadaI(){
+        System.out.println("A continuacion se muestra la colección ordenada ");
+    }
     public void Inventario(){
         System.out.println("5. Ver inventario");
+    }
+    public void Corr(){
+        System.out.println("Ingresado correcto");
+    }
+    public void Inc(){
+        System.out.println("Ingresado mal");
     }
     
     public void InventarioOrd(){
@@ -237,5 +271,14 @@ public class Vista {
     }
     public void Error(){
         System.out.println("Cuidado. Ha ocurrido un error :o");
+    }
+    public void EncontarProductoC(){
+        System.out.println("Se ha encontrado su producto en coleccion");
+    }
+    public void EncontarProductoI(){
+        System.out.println("Se ha encontrado su producto en inventario");
+    }
+    public void UpsNOEncontrado(){
+        System.out.println("Caray! No se ha encontrado su productoe");
     }
 }

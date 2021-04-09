@@ -14,11 +14,11 @@ public class Almacen {
     //Se definen variables:
     private String CategoriaProducto; 
     private String Producto; 
-    private Integer Available;
+    private Integer Available=1;
 
-    public Almacen(String CategoriaProducto, String Producto){
-        this.CategoriaProducto = CategoriaProducto; 
-        this.Producto= Producto;
+    public Almacen(String xd1, String yd1){
+        CategoriaProducto = xd1; 
+        Producto = yd1;
 
     }
     
@@ -41,8 +41,9 @@ public class Almacen {
     }
 
     // Method that show all the information of the txt
-    public String toString(){       
-        return ("Categoria: " + CategoriaProducto + "," + "Nombre del Producto: "+ Producto + "," + "Cantidad:" + Available);
+    public void ImprimirCosasXD(){       
+        System.out.println("Producto: " + CategoriaProducto + "," + "Categoria: "+ Producto + "," + "Cantidad:" + Available );
+        System.out.println(" ");
     }
 
     

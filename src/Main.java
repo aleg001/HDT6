@@ -18,8 +18,13 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException{ 
+        
         //Declaration of instances 
         Vista v = new Vista(); 
+        File f = new File("ListadoProducto.txt");
+        Scanner scanFile = new Scanner(f);
+        StringBuilder xdxd = new StringBuilder();
+        ArrayList producto= new ArrayList();
 
         // Declaration of variables e instancias
         Scanner scan = new Scanner(System.in);
@@ -32,58 +37,30 @@ public class Main {
         int opcionMenusito =0; 
         int Num = 0;
         String lineasEnText="";
-        File f = new File("ListadoProducto.txt");
-        Scanner scanFile = new Scanner(f);
-        
-        StringBuilder xdxd = new StringBuilder();
-        ArrayList producto= new ArrayList();
-        MapS<String,Almacen> MapInUse = null;
-        MapS<String,Almacen> Product = null;
-        
+        String ProductoIngresado = "";
+        String CategoriaIngresada = "";
         
         HashMapFactory <String,Almacen> FactoryMap= new HashMapFactory<String,Almacen>();
-        Map<String, Almacen> AlmacenInventario = null; Map<String, Almacen> ColeccionInventario = null; // Posible error jejeje
-        
+        Map<String, Almacen> AlmacenInventario = null; 
+        Map<String, Almacen> ColeccionInventario = null; // Posible error jejeje
+
         v.Welcome(); // Welcome message is called
         
-        // Count the lines in the file 
-        /*try {
-            BufferedReader reader = new BufferedReader(new FileReader("ListadoProducto.txt"));
-            while (reader.readLine() != null) {
-                Num++;
-                lineasEnText = reader.readLine();
-                xdxd.append(lineasEnText);
-                xdxd.append(System.lineSeparator());
-                lineasEnText = reader.readLine();
-                if(lineasEnText == null)
-                    break;
-                producto.add(lineasEnText);
-            }
-            reader.close();
-            System.out.println(Arrays.toString(producto.toArray()));
-        } catch (Exception e) {
-            v.FileError();
-        }*/
-
         //Cycle to save the information of the document 
-        while (salir==false){
-            while(OpcionHash == false){ 
-                opcion=v.Options();
-                if(opcion > 0)
-                {
-                    OpcionHash = true;
-                    break;
+            while(true){ 
+                try{ 
+                    opcion=v.Options(); 
+                    if(opcion > 0  & opcion < 4){ 
+                        break;
+                    } else{
+                        v.Inc();  
+                    }
+                }catch(Exception e){
+                    v.Inc();
+                    continue;
                 }
-                if(opcion < 4)
-                {
-                    OpcionHash = true;
-                    break;
-                }
-                else{
-                    v.Error();
-                }
-            
-                }
+            }
+  
             // Acording to the option seleccted the it calls the instance
             AlmacenInventario = FactoryMap.seleecionarMapa(opcion); 
             ColeccionInventario = FactoryMap.seleecionarMapa(opcion);  
@@ -92,18 +69,20 @@ public class Main {
             while(scanFile.hasNextLine()){
                 lineasEnText = scanFile.nextLine(); // read file 
                 String[] SeparacionDeLineas = lineasEnText.split("\\|"); // separates file acording to "|"
-                String CategoriaAlmacen = ((SeparacionDeLineas[0].trim())); String ProductosAlmacen = ((SeparacionDeLineas[1].trim()));
+                String CategoriaAlmacen = ((SeparacionDeLineas[0].trim()));  // Saves Category
+                String ProductosAlmacen = ((SeparacionDeLineas[1].trim()));  // Saves Product 
                 Almacen xdxdxdxdx; 
             
-                // Conditional to save information in the map
+            // Conditional to created an Almacen 
             if (AlmacenInventario.isEmpty()){
                 xdxdxdxdx = new Almacen(CategoriaAlmacen, ProductosAlmacen);
                 AlmacenInventario.put(ProductosAlmacen, xdxdxdxdx);
             }
+            // Add info to the existing Almacen 
             else { 
                 if(AlmacenInventario.containsKey(ProductosAlmacen)){
                     Almacen GetProductoAlmacen = AlmacenInventario.get(ProductosAlmacen); 
-                    GetProductoAlmacen.setAvailable(1);
+                    GetProductoAlmacen.setAvailable(1); // sets the quantity of the product 
                 } else {
                     xdxdxdxdx = new Almacen(CategoriaAlmacen, ProductosAlmacen);
                     AlmacenInventario.put(ProductosAlmacen, xdxdxdxdx);  
@@ -112,90 +91,89 @@ public class Main {
             producto.add(CategoriaAlmacen);
         }
 
-        
-
-
-            }
-            /*    for (String product : producto){
-                    String NombreProducto="";
-                    String Categoria="";
-
-                    for (int i=0; i<product.length();i++){
-                        if (anadir){
-                            Categoria += product.charAt(i); // returns the character of a product in the specified index in a string
-                            // Product is separated 
-                        }if(product.charAt(i)!= '|' && !anadir) {
-                            NombreProducto += product.charAt(i); // 
-                        }else{
-                            anadir=true;
-                        }
-                    }
-                    // Almacen AlmacenTemporal;
-                    // AlmacenTemporal = new Almacen(CategoriaProducto, Producto, Available);
-                    
-                    MapInUse.put(NombreProducto, Categoria); // add to the map the key and the value
-                } */
-                // Cycle to start the program 
+            // Cycle to start the program 
                 while(salir1== false){
-                    
                     opcionMenusito = v.OpcionesPorOperacion(); // method OpcionesPorOperacion is called
-
                     // Add product 
                     if(opcionMenusito == 1){
-                        v.Agregar();
                         v.Ingreso();
-                        String key= scan.nextLine(); // input categoria 
+                        CategoriaIngresada= scan.nextLine(); // input categoria 
                         int ElementosAnalizados = 0; 
 
-                        if (producto.contains(key)){
-                            System.out.println("ERROR11");
-                            v.Agregar();
-                            String ProductoIngresado = scan.nextLine(); // ingreso product
-                            int ProductoAdd = 1;
-                            Product.put(key, MapInUse.get(key)); // add info to map 
-                            
+                        if (producto.contains(CategoriaIngresada)){
+                            v.AgregarP();
+                            ProductoIngresado = scan.nextLine(); // ingreso product
+                            int ProductoAdd = 1;        
                         }else{
-                            System.out.println("ERROR ELSE");
+                            v.CategoriaFake();
+                            //System.out.println("ERROR ELSE");
                             v.Error();
                         }
-                        if(!Product.containsKey(key)){
-                            if(MapInUse.containsKey(key)){
-                                Almacen ValorGenerado = MapInUse.get(key);
+                    // Conditional to save a product if is not in the colecction  
+                        if(!ColeccionInventario.containsKey(ProductoIngresado)){
+                            // Conditional to save the product 
+                            if(AlmacenInventario.containsKey(ProductoIngresado)){
+                               Almacen ValorGenerado = AlmacenInventario.get(ProductoIngresado); // obtein data of the map
                                 ValorGenerado.setAvailable(1);
-                                Product.put(key, ValorGenerado);
-                            } 
-                        }else {
-                            Product.get(key).setAvailable(1);
+                                ColeccionInventario.put(ProductoIngresado, ValorGenerado); // save to the colecction 
+                            } else {
+                                Almacen ValorTemporal = new Almacen(ProductoIngresado, CategoriaIngresada);
+                                ColeccionInventario.put(ProductoIngresado, ValorTemporal);
+                            
+                            }
+                        } else { 
+                            ColeccionInventario.get(ProductoIngresado).setAvailable(1); // add 1 to the amount of the product 
                         }
-                       v.CorrectoAgregado(key);
+                       v.CorrectoAgregado(ProductoIngresado); // Message that show the user that the product was successfully saved
 
                     } if (opcionMenusito==2){
-                        v.Categoria();
-                       String search= scan.nextLine();
-                       
-                       if(MapInUse.containsKey(search)){
-                            
-                            System.out.println("La carta consultada fue: " + MapInUse.get(search));
-
-                       }else{
-                           
-                           v.Error();
-                       }
+                        // Llamar una categoria basandose en un producto 
+                        v.IngresoP();
+                        String nombreP = scan.nextLine();
+                        if(ColeccionInventario.containsKey(nombreP)){
+                            // Mostrar mensaje que se encontro en coleccion
+                            v.EncontarProductoC();
+                            ColeccionInventario.get(nombreP).ImprimirCosasXD();
+                        }else if (AlmacenInventario.containsKey(nombreP)){
+                            v.EncontarProductoI();
+                           AlmacenInventario.get(nombreP).ImprimirCosasXD();
+                        }else {v.UpsNOEncontrado();}                       
+    
                     } if (opcionMenusito==3){
+                        // Mostrar coleccion 
+                        v.Coleccion();
+                        v.ColleccionItems();
+                        // Cycle to comper the data of the Almacen and the Coleccion Inventario
+                        for(Map.Entry<String, Almacen> XD :ColeccionInventario.entrySet() ){
+                            XD.getValue().ImprimirCosasXD();
+                        }
                         
                     } if (opcionMenusito==4){
+                        // Mostrar inventario ordenado
+                        v.ColOrdenadaI();
+
                         
                     } if (opcionMenusito==5){
+                        // Mostrar prod/categoria 
+                        v.Alma();
+                        v.AlmacenItems();
+                        // Cycle to compare the data of the Almacen and the Coleccion Inventario
+                        for(Map.Entry<String, Almacen> jejeje :AlmacenInventario.entrySet() ){
+                            jejeje.getValue().ImprimirCosasXD();
+                        }
                         
                     } if (opcionMenusito==6){
-   
+                        // Mostrar prod/categoria existente ordenada
+                        
                     } if (opcionMenusito==7){
+                        // Salir
                         salir1 = true;
+                        v.Despedida();
                     }
-
                 }
-            }
-
-
         }
+    }
+
+
+        
     
