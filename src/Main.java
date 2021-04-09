@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Map;
+import java.lang.Math;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException{ 
@@ -95,7 +96,9 @@ public class Main {
                 while(salir1== false){
                     opcionMenusito = v.OpcionesPorOperacion(); // method OpcionesPorOperacion is called
                     // Add product 
+
                     if(opcionMenusito == 1){
+                       
                         v.Ingreso();
                         CategoriaIngresada= scan.nextLine(); // input categoria 
                         int ElementosAnalizados = 0; 
@@ -128,6 +131,7 @@ public class Main {
 
                     } if (opcionMenusito==2){
                         // Llamar una categoria basandose en un producto 
+                       
                         v.IngresoP();
                         String nombreP = scan.nextLine();
                         if(ColeccionInventario.containsKey(nombreP)){
@@ -151,7 +155,13 @@ public class Main {
                     } if (opcionMenusito==4){
                         // Mostrar inventario ordenado
                         v.ColOrdenadaI();
-
+                        // Mostrar coleccion 
+                        v.Coleccion();
+                        v.ColleccionItems();
+                        // Cycle to comper the data of the Almacen and the Coleccion Inventario
+                        for(Map.Entry<String, Almacen> XD :ColeccionInventario.entrySet() ){
+                            XD.getValue().ImprimirCosasXD();
+                        }
                         
                     } if (opcionMenusito==5){
                         // Mostrar prod/categoria 
@@ -164,7 +174,10 @@ public class Main {
                         
                     } if (opcionMenusito==6){
                         // Mostrar prod/categoria existente ordenada
-                        
+                        // Cycle to compare the data of the Almacen and the Coleccion Inventario
+                        for(Map.Entry<String, Almacen> jejeje :AlmacenInventario.entrySet() ){
+                        jejeje.getValue().ImprimirCosasXD();
+                    }
                     } if (opcionMenusito==7){
                         // Salir
                         salir1 = true;
