@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"<Unnamed>","l":"Almacen"},{"p":"<Unnamed>","l":"HashMapFactory"},{"p":"<Unnamed>","l":"HashMapS"},{"p":"<Unnamed>","l":"LinkedHashMapS"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"MapS"},{"p":"<Unnamed>","l":"Set"},{"p":"<Unnamed>","l":"TreeMapS"},{"p":"<Unnamed>","l":"Vista"}]
