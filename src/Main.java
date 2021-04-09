@@ -10,13 +10,10 @@
 ********************************************************/
 // Imports 
 import java.util.Scanner;
-import java.util.concurrent.SynchronousQueue;
-import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 
 public class Main {
@@ -24,11 +21,12 @@ public class Main {
         //Declaration of instances 
         Vista v = new Vista(); 
 
-        // Declaration of Varibles
+        // Declaration of variables e instancias
         Scanner scan = new Scanner(System.in);
         boolean salir = false;
         boolean salir1= false;
         boolean anadir= false;
+        boolean OpcionHash = false;
         int opcion = 0; 
         int opcionsubmenu = 0;
         int opcionMenusito =0; 
@@ -44,7 +42,7 @@ public class Main {
         
         
         HashMapFactory <String,Almacen> FactoryMap= new HashMapFactory<String,Almacen>();
-        Map<String, Almacen> inv = null; Map<String, Almacen> col = null; // Posible error jejeje
+        Map<String, Almacen> AlmacenInventario = null; Map<String, Almacen> ColeccionInventario = null; // Posible error jejeje
         
         v.Welcome(); // Welcome message is called
         
@@ -69,34 +67,46 @@ public class Main {
 
         //Cycle to save the information of the document 
         while (salir==false){
-            v.MenuOp(); // The method MenuOp is called 
-            opcion=v.Options();
-
+            while(OpcionHash == false){ 
+                opcion=v.Options();
+                if(opcion > 0)
+                {
+                    OpcionHash = true;
+                    break;
+                }
+                if(opcion < 4)
+                {
+                    OpcionHash = true;
+                    break;
+                }
+                else{
+                    v.Error();
+                }
+            
+                }
             // Acording to the option seleccted the it calls the instance
-            MapInUse = FactoryMap.seleecionarMapa(opcion); 
-            Product = FactoryMap.seleecionarMapa(opcion);  
+            AlmacenInventario = FactoryMap.seleecionarMapa(opcion); 
+            ColeccionInventario = FactoryMap.seleecionarMapa(opcion);  
 
             // Cycle to start saving the elements 
             while(scanFile.hasNextLine()){
                 lineasEnText = scanFile.nextLine(); // read file 
                 String[] SeparacionDeLineas = lineasEnText.split("\\|"); // separates file acording to "|"
-                String CategoriaAlmacen = ((SeparacionDeLineas[0].trim())); 
-                String ProductosAlmacen = ((SeparacionDeLineas[1].trim()));
+                String CategoriaAlmacen = ((SeparacionDeLineas[0].trim())); String ProductosAlmacen = ((SeparacionDeLineas[1].trim()));
                 Almacen xdxdxdxdx; 
             
                 // Conditional to save information in the map
-            if (MapInUse == null){
-                System.out.println("AKI TRUENA XD");
+            if (AlmacenInventario.isEmpty()){
                 xdxdxdxdx = new Almacen(CategoriaAlmacen, ProductosAlmacen);
-                MapInUse.put(ProductosAlmacen, xdxdxdxdx);
+                AlmacenInventario.put(ProductosAlmacen, xdxdxdxdx);
             }
             else { 
-                if(MapInUse.containsKey(ProductosAlmacen)){
-                    Almacen GetProductoAlmacen = MapInUse.get(ProductosAlmacen); 
+                if(AlmacenInventario.containsKey(ProductosAlmacen)){
+                    Almacen GetProductoAlmacen = AlmacenInventario.get(ProductosAlmacen); 
                     GetProductoAlmacen.setAvailable(1);
                 } else {
                     xdxdxdxdx = new Almacen(CategoriaAlmacen, ProductosAlmacen);
-                    MapInUse.put(ProductosAlmacen, xdxdxdxdx);  
+                    AlmacenInventario.put(ProductosAlmacen, xdxdxdxdx);  
                 }
             }
             producto.add(CategoriaAlmacen);

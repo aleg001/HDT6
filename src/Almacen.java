@@ -30,7 +30,7 @@ public class Almacen {
     //Setters
     public void setCategoriaProducto(String CategoriaProducto) {this.CategoriaProducto = CategoriaProducto;}
     public void setProducto(String Producto) {this.Producto = Producto;}
-    public void setAvailable(Integer Available) {this.Available = Available;}
+    public void setAvailable(Integer x) {this.Available = Available + x;}
 
     
     public String ImprimirProductoCategoria(){
